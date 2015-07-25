@@ -3,6 +3,7 @@ import pdb
 from urllib.parse import urlencode
 from urllib.request import urlopen
 import webbrowser
+import os
 userinput = "placeholder"
 muzik_url = "http://muzik-api.herokuapp.com/search?%s"
 
@@ -29,12 +30,9 @@ while( not userinput == ""):
         userinput_2 = int(input('Select a song to try'))
         while(not userinput_2 == ''):
             webbrowser.open(songArray[userinput_2][1])
-            confirmation_input = input('Would you like to save this song?')
+            confirmation_input = input('Would you like to download?')
             if (confirmation_input == 'yes'):
-                f = open(songArray[userinput_2][0], 'wb')
-                songData = urlopen(songArray[userinput_2][1]).read()
-                print(songData)
-                f.write(songData)
+                os.system('curl %s --output "%s.mp3"'%(songArray[userinput_2][1], songArray[userinput_2][0]))
                 break
             userinput_2 = int(input('Select a song to try'))
             printSongOptions(songArray)
