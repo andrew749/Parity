@@ -7,8 +7,9 @@ muzik_url = "http://muzik-api.herokuapp.com/search?%s"
 while( not userinput == ""):
         songname = input("Enter the name of the song to download: ")
         data = urlencode({'songname':songname})
-        data = data.encode('utf-8')
         url = muzik_url % data
-        results = urlopen(url).read()
+        print(url)
+        results = urlopen(url).read().decode('utf-8')
+        pdb.set_trace()
         jsonresults = json.loads(results)
         pdb.set_trace()
