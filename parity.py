@@ -10,6 +10,7 @@ while( not userinput == ""):
         url = muzik_url % data
         print(url)
         results = urlopen(url).read().decode('utf-8')
-        pdb.set_trace()
         jsonresults = json.loads(results)
-        pdb.set_trace()
+        for result in jsonresults["url"]:
+            for key,value in  result.items():
+                print (key,value)
