@@ -5,7 +5,7 @@ from urllib.request import urlopen
 import webbrowser
 import os
 userinput = "placeholder"
-muzik_url = "http://muzik-api.herokuapp.com/search?%s"
+muzik_url = "http://muzik.elasticbeanstalk.com/search?%s"
 
 def printSongOptions(songArray):
     for result in reversed(songArray):
